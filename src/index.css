@@ -1,0 +1,241 @@
+@import "tailwindcss";
+
+:root {
+  --theme-h: 271;
+  --theme-s: 76%;
+  --theme-l: 53%;
+  
+  /* Surface hierarchy with tonal elevation */
+  --app-bg: var(--theme-h) calc(var(--theme-s) * 0.15) 98%;
+  --app-text: var(--theme-h) calc(var(--theme-s) * 0.3) 10%;
+  
+  --surface: var(--theme-h) calc(var(--theme-s) * 0.2) 98%;
+  --surface-container-lowest: var(--theme-h) calc(var(--theme-s) * 0.2) 100%;
+  --surface-container-low: var(--theme-h) calc(var(--theme-s) * 0.25) 96%;
+  --surface-container: var(--theme-h) calc(var(--theme-s) * 0.3) 94%;
+  --surface-container-high: var(--theme-h) calc(var(--theme-s) * 0.35) 92%;
+  --surface-container-highest: var(--theme-h) calc(var(--theme-s) * 0.4) 90%;
+  
+  --surface-outline: var(--theme-h) calc(var(--theme-s) * 0.3) 80%;
+  --surface-outline-variant: var(--theme-h) calc(var(--theme-s) * 0.25) 85%;
+  
+  --on-surface: var(--theme-h) calc(var(--theme-s) * 0.3) 10%;
+  --on-surface-variant: var(--theme-h) calc(var(--theme-s) * 0.25) 30%;
+  
+  /* Primary color roles */
+  --primary: var(--theme-h) var(--theme-s) var(--theme-l);
+  --primary-container: var(--theme-h) calc(var(--theme-s) * 0.8) 90%;
+  --on-primary: 0 0% 100%;
+  --on-primary-container: var(--theme-h) var(--theme-s) 10%;
+  
+  /* Secondary color roles */
+  --secondary: var(--theme-h) calc(var(--theme-s) * 0.6) 50%;
+  --secondary-container: var(--theme-h) calc(var(--theme-s) * 0.5) 90%;
+  --on-secondary: 0 0% 100%;
+  --on-secondary-container: var(--theme-h) calc(var(--theme-s) * 0.6) 10%;
+  
+  /* Shape tokens */
+  --shape-corner-none: 0px;
+  --shape-corner-extra-small: 4px;
+  --shape-corner-small: 8px;
+  --shape-corner-medium: 12px;
+  --shape-corner-large: 16px;
+  --shape-corner-extra-large: 28px;
+  --shape-corner-full: 9999px;
+  
+  /* Elevation shadows */
+  --elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --elevation-2: 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
+  --elevation-3: 0 4px 8px 3px rgba(0, 0, 0, 0.15), 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  --elevation-4: 0 6px 10px 4px rgba(0, 0, 0, 0.15), 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+  --elevation-5: 0 8px 12px 6px rgba(0, 0, 0, 0.15), 0 4px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+:root.dark {
+  --app-bg: var(--theme-h) calc(var(--theme-s) * 0.3) 6%;
+  --app-text: var(--theme-h) calc(var(--theme-s) * 0.2) 90%;
+  
+  --surface: var(--theme-h) calc(var(--theme-s) * 0.3) 6%;
+  --surface-container-lowest: var(--theme-h) calc(var(--theme-s) * 0.3) 4%;
+  --surface-container-low: var(--theme-h) calc(var(--theme-s) * 0.35) 10%;
+  --surface-container: var(--theme-h) calc(var(--theme-s) * 0.4) 12%;
+  --surface-container-high: var(--theme-h) calc(var(--theme-s) * 0.45) 17%;
+  --surface-container-highest: var(--theme-h) calc(var(--theme-s) * 0.5) 22%;
+  
+  --surface-outline: var(--theme-h) calc(var(--theme-s) * 0.3) 60%;
+  --surface-outline-variant: var(--theme-h) calc(var(--theme-s) * 0.25) 30%;
+  
+  --on-surface: var(--theme-h) calc(var(--theme-s) * 0.2) 90%;
+  --on-surface-variant: var(--theme-h) calc(var(--theme-s) * 0.2) 80%;
+  
+  --primary: var(--theme-h) var(--theme-s) calc(var(--theme-l) + 20%);
+  --primary-container: var(--theme-h) var(--theme-s) 30%;
+  --on-primary: var(--theme-h) var(--theme-s) 20%;
+  --on-primary-container: var(--theme-h) calc(var(--theme-s) * 0.8) 90%;
+  
+  --secondary: var(--theme-h) calc(var(--theme-s) * 0.6) 70%;
+  --secondary-container: var(--theme-h) calc(var(--theme-s) * 0.5) 30%;
+  --on-secondary: var(--theme-h) calc(var(--theme-s) * 0.6) 10%;
+  --on-secondary-container: var(--theme-h) calc(var(--theme-s) * 0.5) 90%;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background: hsl(var(--app-bg));
+  color: hsl(var(--app-text));
+  font-family: "Roboto", "Inter", "Segoe UI", sans-serif;
+  overflow: auto;
+}
+
+.markdown {
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  font-weight: 600;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.markdown h1 {
+  font-size: 1.5em;
+}
+
+.markdown h2 {
+  font-size: 1.3em;
+}
+
+.markdown h3 {
+  font-size: 1.1em;
+}
+
+.markdown ul,
+.markdown ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.markdown li {
+  margin: 0.25rem 0;
+}
+
+.markdown blockquote {
+  border-left: 3px solid hsl(var(--surface-outline));
+  padding-left: 1rem;
+  margin: 0.5rem 0;
+  color: hsl(var(--on-surface-variant));
+}
+
+.markdown table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.markdown th,
+.markdown td {
+  border: 1px solid hsl(var(--surface-outline));
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.markdown th {
+  background: hsl(var(--surface-container-high));
+  font-weight: 600;
+}
+
+.markdown pre {
+  overflow-x: auto;
+  border-radius: var(--shape-corner-medium);
+  background: hsl(var(--surface-container-highest));
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+}
+
+.markdown code {
+  border-radius: var(--shape-corner-extra-small);
+  background: hsl(var(--surface-container-high));
+  padding: 0.1rem 0.35rem;
+  font-size: 0.9em;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+.markdown pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.markdown p {
+  margin: 0.5rem 0;
+}
+
+.markdown p:first-child {
+  margin-top: 0;
+}
+
+.markdown p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+}
+
+.markdown img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--shape-corner-small);
+  margin: 0.5rem 0;
+}
+
+.markdown hr {
+  border: none;
+  border-top: 1px solid hsl(var(--surface-outline));
+  margin: 1rem 0;
+}
+
+.markdown .katex {
+  font-size: 1.05em;
+}
+
+.markdown .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem 0;
+}
+
+/* Стилизация scrollbar в стиле Material 3 */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: hsl(var(--surface-container-low));
+  border-radius: var(--shape-corner-full);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--surface-outline));
+  border-radius: var(--shape-corner-full);
+  transition: background 0.2s;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--on-surface-variant));
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:active {
+  background: hsl(var(--on-surface));
+}
